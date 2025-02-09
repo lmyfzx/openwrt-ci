@@ -94,6 +94,12 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        
+    - name: Load custom script
+      run: |
+        chmod +x $DIY_SCRIPT
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_SCRIPT
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |
